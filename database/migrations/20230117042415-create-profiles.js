@@ -34,7 +34,7 @@ module.exports = {
           allowNull: false,
           references: {
             key: 'id',
-            model: 'country'
+            model: 'countries'
           },
           onUpdate: 'RESTRICT',
           onDelete: 'CASCADE',
