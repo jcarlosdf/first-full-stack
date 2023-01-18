@@ -43,8 +43,8 @@ app.use(express.json())
 
 
 //Routes
-app.use('/', loginRouter)
-app.use('/', userRouter)
+app.use('/api/v1', loginRouter)
+app.use('/api/v1', userRouter)
 
 //Tell everyone the state of your api
 app.get('/', ({res}) => {

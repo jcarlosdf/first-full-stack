@@ -6,7 +6,7 @@ const passport = require('passport')
 // require('dotenv').config()
 // const jwtSecret = process.env.JWTSECRET
 
-const { findUserByToken } = require('../controllers/users.controllers')
+const { findUserByToken } = require('../services/users.services')
 
 // const options = {
 //   jwtFromRequest : ExtractJwt.fromAuthHeaderWithScheme('jwt'),
@@ -23,7 +23,7 @@ passport.use('bearer', new BearerStrategy(
   }
 ))
 
-console.log(passport)
+// console.log(passport)
 
 // passport.use(
 //   new JwtStrategy(options, (tokenDecoded, done) => {

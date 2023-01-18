@@ -1,44 +1,46 @@
-const jwt = require('jsonwebtoken')
+const emails = [
+  'admin@fullstack.com',
+  'secretary@fullstack.com',
+  'acount@fullstack.com',
+]
 
-const checkUsersCredentials = require('../controllers/auth.temp.controller')
-const jwtSecret = process.env.JWTSECRET
-
-const postLogin = (req, res) => {
-  const { email, password } = req.body
-  // console.log(email, password)
-  if (email && password) {
-    checkUsersCredentials(email, password)
-      .then((data) => {
-        if (data) {
-          const token = jwt.sign(
-            {
-              id: data.id,
-              email: data.email,
-              role: data.role,
-            },
-            jwtSecret
-          )
-
-          res.status(200).json({
-            message: 'Correct Credentials!',
-            token,
+const checkUsersCredentials = async (email, password) => {
+  const wait = (ms) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (emails.includes(email) && password === 'pass123') {
+        //   console.log('resolved')
+          resolve({
+            id: getRandom(100, 1000),
+            email: email,
+            role: 'normal',
           })
-        } else {
-          res.status(401).json({ message: 'Invalid Credentials' })
+        }else{
+        //   console.log('rejected')
+          reject(null)
         }
-      })
-      .catch((err) => {
-        res.status(400).json({ message: err.message })
-      })
-  } else {
-    res.status(400).json({
-      message: 'Missing Data',
-      fields: {
-        email: 'example@example.com',
-        password: 'string',
-      },
+      }, ms)
     })
   }
+  const getRandom = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min)
+  }
+
+  try{
+  
+    const user = await wait(getRandom(0, 5000))
+    
+    if(user){
+      return user
+    }
+  
+    return null
+
+  } catch(error) {
+    return error
+  }
+
 }
 
-module.exports = postLogin
+module.exports = checkUsersCredentials
+
