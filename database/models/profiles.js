@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 const {
   Model
-} = require('sequelize');
+} = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Profiles extends Model {
     /**
@@ -21,26 +21,14 @@ module.exports = (sequelize, DataTypes) => {
     user_id: {
       type: DataTypes.BIGINT,
       allowNull: false,
-      /*references: {
-        key: 'id',
-        model: 'users'
-      }*/
     },
     role_id: {
       type: DataTypes.INT,
       allowNull: false,
-      /*references: {
-        key: 'id',
-        model: 'roles'
-      }*/
     },
     country_id: {
       type: DataTypes.INT,
       allowNull: false,
-      /*references: {
-        key: 'id',
-        model: 'country'
-      }*/
     },
     image_url: {
       type: DataTypes.STRING,
@@ -68,6 +56,6 @@ module.exports = (sequelize, DataTypes) => {
     //     attributes: {exclude: ['created_at', 'updated_at']}
     //   }
     // }
-  });
-  return Profiles;
-};
+  })
+  return Profiles
+}

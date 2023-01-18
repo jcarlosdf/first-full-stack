@@ -30,6 +30,7 @@ module.exports = {
         },
         password: {
           type: Sequelize.STRING,
+          allowNull: false,
         },
         email_verified: {
           type: Sequelize.DATEONLY,
@@ -39,12 +40,12 @@ module.exports = {
           // ! allowNull: false,
         },
         created_at: {
-          allowNull: false,
           type: Sequelize.DATE,
+          allowNull: false,
         },
         updated_at: {
-          allowNull: false,
           type: Sequelize.DATE,
+          allowNull: false,
         }
       }, { transaction })
 

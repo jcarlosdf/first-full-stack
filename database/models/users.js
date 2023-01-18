@@ -17,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
     id: {
       type: DataTypes.BIGINT,
       primaryKey: true,
-      autoIncrement: true,
     },
     first_name: {
       type: DataTypes.STRING,
@@ -44,7 +43,9 @@ module.exports = (sequelize, DataTypes) => {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      validate: {
+        notEmpty: true
+      }
     },
     password: {
       type: DataTypes.STRING,
