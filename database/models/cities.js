@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Cities.hasMany(models.Publications, {as: 'city', foreignKey: 'city_id'})
+      Cities.belongsTo(models.States, {as: 'state', foreignKey: 'state_id'})
     }
   }
   Cities.init({
