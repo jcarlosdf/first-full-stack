@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Publications.belongsToMany(models.Profiles, { as: 'votes', through: models.Votes, foreignKey: 'publication_id' })
       Publications.belongsTo(models.Profiles, {as: 'profile', foreignKey: 'profile_id'})
-      Publications.belongsTo(models.Publication_types, {as: 'publication_type', foreignKey: 'publication_type_id'})
+      Publications.belongsTo(models.Publications_types, {as: 'publication_type', foreignKey: 'publication_type_id'})
       Publications.belongsTo(models.Cities, {as: 'city', foreignKey: 'city_id'})
 
     }

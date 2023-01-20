@@ -33,5 +33,5 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true,
     timestamps: true,
   })
-  return State
+  return States
 }

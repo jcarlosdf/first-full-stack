@@ -9,13 +9,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Countries.hasMany(models.Profiles, {as: 'country', foreignKey: 'country_id'})
-      Countries.hasMany(models.States, {as: 'country', foreignKey: 'country_id'})
+      Countries.hasMany(models.Profiles, {foreignKey: 'country_id'})
+      Countries.hasMany(models.States, {foreignKey: 'country_id'})
     }
   }
   Countries.init({
     id: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       primaryKey: true,
     },
     name: {

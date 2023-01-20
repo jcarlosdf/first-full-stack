@@ -26,11 +26,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     role_id: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     country_id: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     image_url: {
@@ -40,10 +40,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     code_phone: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
     },
     phone: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
     },
   }, {
     sequelize,
