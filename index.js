@@ -5,6 +5,7 @@ require('dotenv').config()
 
 const app = express()
 const PORT = process.env.PORT || 8000
+const usersRouter = require('./routes/user.routes')
 
 /*
 Cors Settings
@@ -41,9 +42,8 @@ app.use(express.urlencoded({ extended: true }))
 /*
 Routes
 */
-
 /* 
-    Tell everyone the state of your api
+Tell everyone the state of your api
 */
 app.get('/', ({ res }) => {
   return res.json({
@@ -51,6 +51,8 @@ app.get('/', ({ res }) => {
     maintenance: false,
   })
 })
+
+app.use('/users', usersRouter)
 
 app.listen(PORT, () => {
   console.log(`Server started on port: ${PORT}`)
