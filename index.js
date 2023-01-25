@@ -5,20 +5,21 @@ require('dotenv').config()
 
 const app = express()
 const PORT = process.env.PORT || 8000
+const usersRouter = require('./routes/user.routes')
 
 /*
 Cors Settings
 */
-const whitelist = ['http://localhost:8000']
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whitelist.includes(origin) ||  !origin) {
-      callback(null, true)
-    } else {
-      callback(new Error('Denied By CORS'))
-    }
-  }
-}
+// const whitelist = ['http://localhost:8000']
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (whitelist.includes(origin) ||  !origin) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Denied By CORS'))
+//     }
+//   }
+// }
 
 if (process.env.NODE_ENV === 'production') {
   app.use(cors())
@@ -35,15 +36,14 @@ if (process.env.NODE_ENV === 'production') {
 /*
 Accept Json & form-urlencoded
 */
-// app.use(express.json());
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 /*
 Routes
 */
-
 /* 
-    Tell everyone the state of your api
+Tell everyone the state of your api
 */
 app.get('/', ({ res }) => {
   return res.json({
@@ -51,6 +51,8 @@ app.get('/', ({ res }) => {
     maintenance: false,
   })
 })
+
+app.use('/users', usersRouter)
 
 app.listen(PORT, () => {
   console.log(`Server started on port: ${PORT}`)
